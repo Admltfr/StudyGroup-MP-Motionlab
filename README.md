@@ -47,9 +47,9 @@ branch baru
 
 rename branch
 1. git branch -M branch lama nama branch baru
-2. lalu untuk remote
-   git fetch origin
-  git branch -u origin/branchbaru branchbaru
+2. lalu untuk remote,
+   git fetch origin,
+  git branch -u origin/branchbaru branchbaru,
    git remote set-head origin -a
 
 remote merge branch 
