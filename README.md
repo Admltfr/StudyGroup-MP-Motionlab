@@ -38,12 +38,19 @@ branching operation
 4. git checkout main <= switch ke branch main
 5. git branch -d master <= menghapus branch master (harus berada di branch lain terlebih dahulu pakai checkout kalau mau pindah)
 
-branching crud 
-1. git checkout -b master <= buat dulu branch baru
+branch baru
+1. git checkout -b branchbaru <= buat dulu branch baru
 2. git add . 
 3. git commit -m "message"
 4. git push <= copy saja commandnya di terminal yaitu git push --set-upstream origin master
 5. done
+
+rename branch
+1. git branch -M branch lama nama branch baru
+2. lalu untuk remote
+   git fetch origin
+  git branch -u origin/branchbaru branchbaru
+   git remote set-head origin -a
 
 remote merge branch 
 1. klik compare and pull request
