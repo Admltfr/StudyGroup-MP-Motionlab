@@ -101,12 +101,17 @@ void main() {
     //perulangan untuk proses utama
     while (switchMenu != "0") {
       if (switchMenu == "1") {
+        /*jika opsi yang dipilih 1 maka sistem akan mengeksekusi fungsi cek saldo
+         jika saldo jumlahnya 0 akan memunculkan pesan saran untuk melakukan deposit*/
         checkBalance(balance, user);
       } else if (switchMenu == "2") {
+        //jika opsi yang dipilih 2 maka sistem akan meminta user memasukkan jumlah deposit dan mengeksekusi fungsi deposit saldo
         stdout.write("Enter the amount you want to deposit: ");
         int deposit = int.parse(stdin.readLineSync()!);
         depositBalance(balance, user, deposit);
       } else if (switchMenu == "3") {
+        /*jika opsi yang dipilih 3 maka sistem akan meminta user memasukkan jumlah penarikan dan mengeksekusi fungsi penarikan saldo, 
+        jika  tidak cukup akan muncul pesan saldo tidak cukup*/
         stdout.write("Enter the amount you want to withdraw: ");
         int withdraw = int.parse(stdin.readLineSync()!);
         withdrawBalance(balance, user, withdraw);
