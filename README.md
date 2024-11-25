@@ -3,7 +3,7 @@ Ringkasan materi pertemuan WEEK-1
 
 Ringkasan Ditulis dalam bentuk code dan comments
 
-<h1><strong> Disarankan untuk melihat nya di dalam Readme.dart pada branch ini </strong></h1>
+<h1><strong> Disarankan untuk melihat nya di dalam Readme.dart pada branch ini (karena jika readme.md kurang bagus formatnya dan lebih sulit untuk dibaca) </strong></h1>
 
 void main() {
 
