@@ -3,6 +3,8 @@ Ringkasan materi pertemuan WEEK-1
 
 Ringkasan Ditulis dalam bentuk code dan comments
 
+<strong> Disarankan untuk melihat nya di dalam Readme.dart pada branch ini </strong>
+
 void main() {
 
   //basic variabel dan print
