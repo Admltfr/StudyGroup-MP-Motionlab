@@ -1,4 +1,5 @@
-Ringkasan materi pertemuan WEEK-1_
+Ringkasan materi pertemuan WEEK-1
+
 Ringkasan Ditulis dalam bentuk code dan comments
 
 void main() {
@@ -242,3 +243,5 @@ class siswa {
   //untuk public/private asal masih dalam file yang sama masih bisa diakses
 
 }
+
+
