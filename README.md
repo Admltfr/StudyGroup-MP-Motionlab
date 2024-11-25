@@ -2,6 +2,7 @@ Ringkasan materi pertemuan WEEK-1
 Ringkasan Ditulis dalam bentuk code dan comments
 
 void main() {
+
   //basic variabel dan print
   String nama = "Adam Lutfi Ramadhan";
   int umur = 20;
