@@ -1,11 +1,10 @@
+<br>
 Ringkasan materi pertemuan WEEK-1
-
 Ringkasan Ditulis dalam bentuk code dan comments
 
 void main() {
 
   //basic variabel dan print
-  
   String nama = "Adam Lutfi Ramadhan";
   int umur = 20;
   double tinggi = 173.5;
@@ -17,31 +16,21 @@ void main() {
 
 
   print("Halo Nama saya $nama, saya berumur $umur" );
-
   //untuk petik dua tapi tetap diprint petik duanya
-  
   print("saya \"mahasiswa\"");
-
   //penggunaan var
-  
   //var digunakan untuk agar si dart bisa otomatis mendeteksi variabelnya apa
-  
   var sigma = "adam";
   var pi = 3.14;
   var skor = 4;
-
   //inisiasi / assign variabel
-  
   //sigma = 2;
-  
   // assign diatas itu tidak bisa karena dart itu variabelnya strongly typed hingga gak bisa seenaknya diubah
-  
   sigma = "mada";
   pi = 2.1;
   print(sigma);
   print(pi);
   print(skor);
-
   // untuk mengubah variabel secara bebas pakai dynamic (SANGAT TIDAK DISARANKAN)
   dynamic lingkaran = "lingkaran";
   lingkaran = 20;
@@ -243,5 +232,5 @@ class siswa {
   //untuk public/private asal masih dalam file yang sama masih bisa diakses
 
 }
-
+</br>
 
