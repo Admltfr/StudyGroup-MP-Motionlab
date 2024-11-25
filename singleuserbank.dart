@@ -75,9 +75,11 @@ void main() {
       balance.withdrawBalance(balance, withdraw);
       divider();
     }
+    //mengulang proses awal
     Menu();
     switchMenu = stdin.readLineSync();
     switchMenu = optionValidator(["0", "1", "2", "3"], switchMenu);
   }
+  //menampilkan pesan penutup
   endProgram();
 }
