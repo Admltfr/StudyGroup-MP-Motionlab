@@ -1,6 +1,6 @@
 # flutter_motion1
 ## Daftar Isi
-- [Pendahuluan](#pendahuluan)
+- [Pendahuluan](#Pendahuluan)
 
 A new Flutter project.
 
