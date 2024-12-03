@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_motion1/main.dart';
 
-class Detailpage extends StatelessWidget {
-  const Detailpage({super.key});
+class Detailpageheadset extends StatelessWidget {
+  const Detailpageheadset({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,7 @@ class Detailpage extends StatelessWidget {
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(100)),
                             child: Image.asset(
-                              "assets/images/Jam.png",
+                              "assets/images/Headset.png",
                               //double infinity agar dia menyesuaikan widthnya (kayak mediaquery width)
                               width: double.infinity,
                               //selalu gunakan height dari figmanya
@@ -70,7 +70,7 @@ class Detailpage extends StatelessWidget {
                           //agar kedua text ini bisa allign left maka ingat parentnya juga harus left maka jadi axis start yaitu si column pertama
                           //tapi column itu main axisnya top dan botton sedangkan text kanan kiri maka kita gunakan crossaxis untuk column dan row utnuk mainaxis
                           const Text(
-                            "Mi Band 8 Pro",
+                            "Siberia 800",
                             //disini sebenarnya textalign tidak perlu karena parentnya sudah mengimplementasikannya duluan
                             textAlign: TextAlign.left,
                             style: TextStyle(fontSize: 30),
@@ -80,7 +80,7 @@ class Detailpage extends StatelessWidget {
                             height: 10,
                           ),
                           const Text(
-                            "\$54.00",
+                            "\$45.00",
                             //disini sebenarnya textalign tidak perlu karena parentnya sudah mengimplementasikannya duluan
                             textAlign: TextAlign.left,
                             style: TextStyle(color: Color(0xFF00623B)),

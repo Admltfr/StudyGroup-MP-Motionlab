@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_motion1/detailpage.dart';
+import 'package:flutter_motion1/detailpagejam.dart';
+import 'package:flutter_motion1/detailpageheadset.dart';
+import 'package:flutter_motion1/detailpagebaju.dart';
+import 'package:flutter_motion1/detailpagesepatu.dart';
 
 //untuk buat widget kita tentu harus membuat class contohnya adalah myapp (sebagai root) (namanya juga boleh berubah)
 //untuk extends statelesswidget ia harus import  'import 'package:flutter/material.dart';'
@@ -205,7 +208,7 @@ class _MyAppState extends State<Homepage> {
                               crossAxisCount: 2,
                               mainAxisSpacing: 10,
                               crossAxisSpacing: 10,
-                              childAspectRatio: 0.7,
+                              childAspectRatio: 0.61,
                             ),
                             scrollDirection: Axis.vertical,
                             children: [
@@ -215,7 +218,7 @@ class _MyAppState extends State<Homepage> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            const Detailpage()),
+                                            const Detailpagejam()),
                                   );
                                 },
                                 child: Container(
@@ -237,8 +240,8 @@ class _MyAppState extends State<Homepage> {
                                             borderRadius:
                                                 BorderRadius.circular(10)),
                                         width: double.infinity,
-                                        child: Image.network(
-                                          'https://picsum.photos/250?image=1',
+                                        child: Image.asset(
+                                          'assets/images/Jam.png',
                                           fit: BoxFit.cover,
                                         ),
                                       ),
@@ -288,7 +291,14 @@ class _MyAppState extends State<Homepage> {
                                 ),
                               ),
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const Detailpagebaju()),
+                                  );
+                                },
                                 child: Container(
                                   decoration: BoxDecoration(
                                       color: Colors.white,
@@ -308,8 +318,8 @@ class _MyAppState extends State<Homepage> {
                                             borderRadius:
                                                 BorderRadius.circular(10)),
                                         width: double.infinity,
-                                        child: Image.network(
-                                          'https://picsum.photos/250?image=2',
+                                        child: Image.asset(
+                                          'assets/images/Baju.png',
                                           fit: BoxFit.cover,
                                         ),
                                       ),
@@ -321,14 +331,14 @@ class _MyAppState extends State<Homepage> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text("Mi Band 8 Pro"),
+                                              Text("Lycra Men's Shirt"),
                                               Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceBetween,
                                                 children: [
                                                   const Text(
-                                                    "\$54.00",
+                                                    "\$12.00",
                                                     style: TextStyle(
                                                         color:
                                                             Color(0xFF00623B)),
@@ -359,7 +369,14 @@ class _MyAppState extends State<Homepage> {
                                 ),
                               ),
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const Detailpageheadset()),
+                                  );
+                                },
                                 child: Container(
                                   decoration: BoxDecoration(
                                       color: Colors.white,
@@ -379,8 +396,8 @@ class _MyAppState extends State<Homepage> {
                                             borderRadius:
                                                 BorderRadius.circular(10)),
                                         width: double.infinity,
-                                        child: Image.network(
-                                          'https://picsum.photos/250?image=3',
+                                        child: Image.asset(
+                                          'assets/images/Headset.png',
                                           fit: BoxFit.cover,
                                         ),
                                       ),
@@ -392,14 +409,14 @@ class _MyAppState extends State<Homepage> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text("Mi Band 8 Pro"),
+                                              Text("Siberia 800"),
                                               Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceBetween,
                                                 children: [
                                                   const Text(
-                                                    "\$54.00",
+                                                    "\$45.00",
                                                     style: TextStyle(
                                                         color:
                                                             Color(0xFF00623B)),
@@ -430,7 +447,14 @@ class _MyAppState extends State<Homepage> {
                                 ),
                               ),
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const Detailpagesepatu()),
+                                  );
+                                },
                                 child: Container(
                                   decoration: BoxDecoration(
                                       color: Colors.white,
@@ -450,8 +474,8 @@ class _MyAppState extends State<Homepage> {
                                             borderRadius:
                                                 BorderRadius.circular(10)),
                                         width: double.infinity,
-                                        child: Image.network(
-                                          'https://picsum.photos/250?image=4',
+                                        child: Image.asset(
+                                          'assets/images/Sepatu.png',
                                           fit: BoxFit.cover,
                                         ),
                                       ),
@@ -463,14 +487,14 @@ class _MyAppState extends State<Homepage> {
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.start,
                                             children: [
-                                              Text("Mi Band 8 Pro"),
+                                              Text("Strawberry Frappucino"),
                                               Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment
                                                         .spaceBetween,
                                                 children: [
                                                   const Text(
-                                                    "\$54.00",
+                                                    "\$35.00",
                                                     style: TextStyle(
                                                         color:
                                                             Color(0xFF00623B)),

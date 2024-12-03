@@ -65,6 +65,9 @@ flutter:
     - assets/images/Profile-image.png
     - assets/images/Jam.png
     - assets/images/IconShop.png
+    - assets/images/Sepatu.png
+    - assets/images/Headset.png
+    - assets/images/Baju.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
