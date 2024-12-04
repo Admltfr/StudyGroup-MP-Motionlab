@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_motion1/homepage.dart';
+import 'package:flutter_motion1/login_page.dart';
+//import 'package:flutter_motion1/homepage.dart';
 
 void main() {
   //dalam flutter kita harus menggunakan runapp
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Homepage(),
+      home: Loginpage(),
     );
   }
 }
