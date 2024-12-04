@@ -1,21 +1,23 @@
-belajar git motion
+# Basic Git commands
 
-
-git commands
-
-
-
-inisialisasi + remote repo
-1. Folder
-2. Git init
-3. Cek bila iya udh add apa belum pakai git status
-4. GIT add ( git add . untuk seluruh file project)
-5. git commit -m "pesannya apa"
-6. Buka github 
-7. git remote add origin link repo (origin boleh custom tapi biasanya pakai origin)
-8. git remote -v
-9. git push -u origin main (sesuai nama branch dan origin) (untuk cek branchnya apa bisa git branch)
-10. extra (cara ubah branch = git branch -M main <= untuk ubah master ke main)
+- git init
+> Inisialisasi Repository
+- git status
+> Pengecekan status repository
+- git add ( git add . untuk seluruh file project)
+> Stage all changes
+- git commit -m "message"
+> Commit dengan message
+- Buka github dan buat remote repository
+> Untuk membuat repo remote yang bisa digunakan untuk push
+- git remote add origin remote-repo-link
+> Digunakan untuk menyambungkan repo remote ke local (origin bisa custom namanya)
+- git remote -v
+> Untuk melihat ketersambungan remote
+- git branch
+> Untuk melihat semua branch
+- git push -u origin branchname 
+> Untuk push local ke remote
 
 undo
 1. git log dapatkan hashcode dari log sebelum head
