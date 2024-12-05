@@ -3,6 +3,7 @@ import 'package:flutter_motion1/login_page.dart';
 //import 'package:flutter_motion1/homepage.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   //dalam flutter kita harus menggunakan runapp
   //(gak bisa langsung print gitu kayak dart langsung) runapp menerima sebuah parameter yaitu class yang akan dirun contohnya myapp
   runApp(const MyApp());
