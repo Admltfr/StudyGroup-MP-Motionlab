@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_motion1/homepage.dart';
-import 'package:flutter_motion1/registration_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
@@ -109,12 +107,7 @@ class Loginpage extends StatelessWidget {
                       backgroundColor: Color(0xFF00623B),
                     ),
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) {
-                          return const Homepage();
-                        }),
-                      );
+                      Navigator.pushNamed(context, '/home');
                     },
                     child: Text(
                       "Login",
@@ -137,12 +130,7 @@ class Loginpage extends StatelessWidget {
                       Text("Don't have an account?"),
                       TextButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) {
-                                return const RegistrationPage();
-                              }),
-                            );
+                            Navigator.pushNamed(context, '/register');
                           },
                           child: Text("Register")),
                     ],

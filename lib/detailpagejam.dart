@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_motion1/main.dart';
 
 class Detailpagejam extends StatelessWidget {
   const Detailpagejam({super.key});
@@ -26,10 +25,7 @@ class Detailpagejam extends StatelessWidget {
                       //3 icon ini jika jarknya simetris maka iya bisa ditaro di appbar aja jika perlu kustomisasi maka disini aja
                       GestureDetector(
                         onTap: () {
-                          Navigator.pop(
-                            context,
-                            MaterialPageRoute(builder: (context) => MyApp()),
-                          );
+                          Navigator.popAndPushNamed(context, '/home');
                         },
                         child: Icon(
                           Icons.chevron_left,

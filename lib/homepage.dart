@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_motion1/detailpagejam.dart';
-import 'package:flutter_motion1/detailpageheadset.dart';
-import 'package:flutter_motion1/detailpagebaju.dart';
-import 'package:flutter_motion1/detailpagesepatu.dart';
 
 //untuk buat widget kita tentu harus membuat class contohnya adalah myapp (sebagai root) (namanya juga boleh berubah)
 //untuk extends statelesswidget ia harus import  'import 'package:flutter/material.dart';'
@@ -214,12 +210,7 @@ class _MyAppState extends State<Homepage> {
                             children: [
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const Detailpagejam()),
-                                  );
+                                  Navigator.pushNamed(context, '/jam');
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
@@ -292,12 +283,7 @@ class _MyAppState extends State<Homepage> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const Detailpagebaju()),
-                                  );
+                                  Navigator.pushNamed(context, '/baju');
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
@@ -370,12 +356,7 @@ class _MyAppState extends State<Homepage> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const Detailpageheadset()),
-                                  );
+                                  Navigator.pushNamed(context, '/headset');
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
@@ -448,12 +429,7 @@ class _MyAppState extends State<Homepage> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const Detailpagesepatu()),
-                                  );
+                                  Navigator.pushNamed(context, '/sepatu');
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(

@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_motion1/detailpagebaju.dart';
+import 'package:flutter_motion1/detailpageheadset.dart';
+import 'package:flutter_motion1/detailpagejam.dart';
+import 'package:flutter_motion1/detailpagesepatu.dart';
+import 'package:flutter_motion1/homepage.dart';
 import 'package:flutter_motion1/login_page.dart';
+import 'package:flutter_motion1/registration_page.dart';
 //import 'package:flutter_motion1/homepage.dart';
 
 void main() {
@@ -20,9 +26,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Loginpage(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const Loginpage(),
+        '/register' : (context) => const RegistrationPage(),
+        '/home': (context) => const Homepage(),
+        '/baju': (context) => const Detailpagebaju(),
+        '/headset': (context) => const Detailpageheadset(),
+        '/jam': (context) => const Detailpagejam(),
+        '/sepatu': (context) => const Detailpagesepatu(),
+      },
     );
   }
 }
