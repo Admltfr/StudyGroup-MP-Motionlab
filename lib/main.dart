@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_motion1/detailpagebaju.dart';
-import 'package:flutter_motion1/detailpageheadset.dart';
-import 'package:flutter_motion1/detailpagejam.dart';
-import 'package:flutter_motion1/detailpagesepatu.dart';
-import 'package:flutter_motion1/homepage.dart';
-import 'package:flutter_motion1/login_page.dart';
-import 'package:flutter_motion1/registration_page.dart';
-//import 'package:flutter_motion1/homepage.dart';
+import 'package:flutter_motion1/pages/detailpagebaju.dart';
+import 'package:flutter_motion1/pages/detailpageheadset.dart';
+import 'package:flutter_motion1/pages/detailpagejam.dart';
+import 'package:flutter_motion1/pages/detailpagesepatu.dart';
+import 'package:flutter_motion1/pages/homepage.dart';
+import 'package:flutter_motion1/pages/login_page.dart';
+import 'package:flutter_motion1/pages/registration_page.dart';
 
 void main() {
+  //untuk load semua package
   WidgetsFlutterBinding.ensureInitialized();
   //dalam flutter kita harus menggunakan runapp
   //(gak bisa langsung print gitu kayak dart langsung) runapp menerima sebuah parameter yaitu class yang akan dirun contohnya myapp
@@ -28,10 +28,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/login',
       routes: {
-        '/': (context) => const Loginpage(),
-        '/register' : (context) => const RegistrationPage(),
+        '/login': (context) => const Loginpage(),
+        '/register': (context) => const RegistrationPage(),
         '/home': (context) => const Homepage(),
         '/baju': (context) => const Detailpagebaju(),
         '/headset': (context) => const Detailpageheadset(),
@@ -41,3 +41,18 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+//semakin banyak page yang numpuk semakin berat
+
+                  //untuk material page route sebenarnya ada cara lebih mudah,
+                  //hapus navigator dlu lalu pindah ke material app, didalamnya atribut routes kita daftarkan di awal contoh
+                  //routes :
+                  //  {'/': (context) => const Loginpage()}
+                  //  {'/Register': (context => const Registerpage)}
+                  //kan pasti error maka kita gak bisa pake home kita harus pakai
+                  //initialroute: '/'
+                  //maksudnya initial route akan langsung berapa di alamat route '/'
+                  // kan ada 2 '/' dan '/register' nahh
+                  //oh ya ini di main.dart
+                  //untuk ngepush maka
+                  //pakai navigator.pushname(context,'/register');
