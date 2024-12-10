@@ -1,179 +1,120 @@
 ## Daftar Isi 
-- [RunApp](#runapp) 
-- [Widget](#widget) 
-- [Struktur Umum](#struktur-umum) 
-  -  [MaterialApp](#materialapp) 
-  -  [Scaffold](#scaffold)
-  -  [Widget Umum](#widget-umum)
-  -  [Widget Layouting](#widget-layouting)
+- [Modularitas](#modularitas) 
+	- [Aturan Penamaan](#aturan-penamaan) 
+	- [Reusable Widget](#reusable-widget) 
+- [Package](#package) 
+- [Navigasi](#navigasi) 
+  -  [Aturan Navigasi](#aturan-navigasi) 
+  -  [Push](#push)
+  -  [Pop](#pop)
 - [Shortcut](#shortcut) Penting!
 
-## RunApp
-> Dalam flutter harus menggunakan runapp karena flutter tidak bisa dijalankan seperti program dart biasa secara langsung
+## Modularitas
+- **Modularisasi** adalah praktik membagi fungsionalitas menjadi modul-modul yang terpisah dan independen. Dalam pengembangan aplikasi adalah cara yang efisien untuk mengatur komponen-komponen aplikasi dan memungkinkan kolaborasi dalam tim-tim pengembangan.
+### Aturan Penamaan
+- Dalam penamaan file di framework flutter sendiri biasanya digunakan x_y.dart sebagai penamaan secara umumnya
+### Reusable Widget
+- **Reusable Widget** adalah widget yang bisa digunakan kembali, untuk mempermudah pembacaan dan pembuatan algoritma terdapat suatu prinsip penting yaitu modularisasi fungsi/code untuk menghindari duplikasi suatu code yang berpotensi membingungkan programmer lain dan mempersulit proses debugging, oleh karena itu dalam flutter sendiri widget dapat digunakan kembali. Contohnya
+> Widget.dart
 ```dart
-void main() {
-  //runapp menerima sebuah parameter yaitu class yang akan dirun contohnya myapp (nama bisa dikustomisasikan)
-  runApp(const MyApp());
+class  ReusableWidget  extends  StatelessWidget {
+	final  String  text;
+	const  ReusableWidget({super.key,required  this.text});
+	@override
+	Widget  build(BuildContext  context) {
+		return  Container(
+			child:  Text(text)
+		);
+	}
+}
+```
+File widget,dart diatas biasanya disimpan di direktori lib/pages/Widget.dart
+
+Lalu untuk memanggil widgetnya sendiri, perlu mengimport file widget tersebut dan disini dapat dilakukan pemanggilan
+> Main.dart
+```dart
+import  'package:project_name/pages/Widget.dart';
+class  MyApp  extends  StatelessWidget {
+	const  MyApp({super.key});
+	@override
+	Widget  build(BuildContext  context) {
+		return  MaterialApp(
+			home:  Scaffold(
+				body: ReusableWidget(text : "DRY"), 
+			),
+		);
+	}
 }
 ```
 
-## Widget
-
--   Widget adalah komponen yang saling terhubung untuk membentuk antarmuka (UI) di Flutter
-- Dalam flutter terdapat suatu pohon yang digunakan untuk membangun suatu antarmuka (UI) yaitu pohon widget dimana semua widget harus memenuhi urutan ini secara sekuensial
-### Contoh :
-<h3  align="center">Pohon Widget</h3>
-
-```mermaid
-graph LR 
-A((Root)) --> B((MyApp)) --> C((MaterialApp)) --> D((Scaffold)) --> E((Container)) -->
-F((Row)) --> G((Column)) --> I((Icon)) 
-			 G((Column)) --> J((Container))	--> M((Text))			 
-
-F((Row)) --> H((Column)) --> K((Icon))
-			 H((Column)) --> L((Container)) --> N((Text))	
-
-
+## Package
+- **Package** dalam framework flutter adalah kumpulan kode dart yang dapat memudahkan atau mengakses file dart yang membantu proses pengembangan aplikasi. Contohnya seperti Lottie dan Google Fonts yang dimana package ini dapat memudahkan pengembang atau developer dalam mengembangkan suatu aplikasi dengan fungsional yang lebih baik. Contoh instalasi :
+format: nama_package : ^versi
+> Pubspec.yaml
+```yaml
+dependencies:
+	flutter:
+		sdk: flutter
+	cupertino_icons: ^1.0.8
+	lottie: ^3.1.3
+	google_fonts: ^6.2.1
 ```
-
-- Untuk buat widget kita tentu harus membuat class contohnya adalah myapp (sebagai root) (namanya juga boleh berubah) yang classnya akan di extends pada suatu statelesswidget/statefulwidget yang harus terlbeih dahulu mengimport suatu package yaitu material.dart 
+Lalu run di terminal
+```cmd
+flutter pub get 
+```
+Lalu diimport pada file.dart yang menggunakan package tersebut. Contoh :
 ```dart
-import 'package:flutter/material.dart';
+import  'package:google_fonts/google_fonts.dart';
 ```
-## Struktur Umum
- - Struktur umum dari suatu proyek flutter haruslah memenuhi aturan dari pohon widget dan harus sekuensial sifatnya (berurutan), berikut adalah struktur paling umum dari suatu proyek framework flutter (Namun beberapa struktur dapat berubah namun tetap harus sekuensial seperti MaterialApp yang bisa digantikan dengan CupertinoApp yang dispesialisasikan dalam pengembangan aplikasi platfrom ios)
- ### MaterialApp
- - MaterialApp adalah sebuah widget root yang digunakan untuk mengimplementasikan tema dan beberapa pengaturan lainnya
- Contoh :
+Lalu terakhir masukkan sintaks untuk melakukan load semua package saat aplikasi dimulai pada main.dart didalam fungsi void main()
 ```dart
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+WidgetsFlutterBinding.ensureInitialized();
+```
+## Navigasi
+- Navigasi merupakan suatu mekanisme untuk berpindah pada satu page ke page yang lain, disini mekanisme navigasi sangat penting untuk diterapkan pada setiap aplikasi yang ada hingga sifatnya wajib untuk diterapkan untuk di berbagai proyek yang memiliki lebih dari 1 page.
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Homepage(),
-    );
-  }
-```
-> Contoh pengonstruksian MaterialApp dalam flutter
- ### Scaffold
- - Pada MaterialApp terdapat atribut yaitu "home : " yang didalamnya terdapat Scaffold yang merupakan widget utama yang biasanya merupakan suatu kerangka visual dari suatu proyek yang diterapkan pada layar
+### Aturan Navigasi
+- Navigasi page sendiri dapat dianalogikan sebagai stack/tumpukan yang dimana memiliki konsep Last In, First Out hingga memiliki 2 proses yaitu Push dan Pop
+- Dalam framework flutter terdapat atribut dari MaterialApp yaitu routes yang dimana ini digunakan untuk menginisialisasi semacam map untuk melakukan navigasi. Contoh : 
+> Main.dart
 ```dart
- return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold()
- )
+class  MyApp  extends  StatelessWidget {
+	const  MyApp({super.key});
+	@override
+	Widget  build(BuildContext  context) {
+		return  MaterialApp(
+			debugShowCheckedModeBanner:  false,
+			initialRoute:  '/login',
+			routes: {
+				'/login': (context) =>  const  Loginpage(),
+				'/register': (context) =>  const  RegistrationPage(),
+				'/home': (context) =>  const  Homepage(),
+				'/baju': (context) =>  const  Detailpagebaju(),
+				'/headset': (context) =>  const  Detailpageheadset(),
+				'/jam': (context) =>  const  Detailpagejam(),
+				'/sepatu': (context) =>  const  Detailpagesepatu(),
+			},
+		);
+	}
+}
 ```
-> Contoh pengonstruksian Scaffold dalam flutter
- ### Widget Umum
- - Terdapat beberapa widget umum yaitu
-	 - Safearea
-		 - Safearea adalah suatu widget yang sangat penting yang biasanya digunakan sebagai pembungkus seluruh widget yang ada pada layar sebagai widget parent utama, yang berfungsi sebagai pemberi padding secara otomatis agar tidak menyentuh bagian layar yang seharusnya tidak boleh disentuh, disisi lain safearea juga memudahkan dan mengoptimalkan aplikasi untuk bekerja pada platform yang berbeda karena menggunakan mediaQuery sebagai dasar paddingnya 
-		 
-	```dart
-	 return MaterialApp(
-	        debugShowCheckedModeBanner: false,
-	        home: Scaffold(
-		        body: SafeArea(
-			        child : Widget()
-			    )
-			}
-	 )
-	```
-	 - Text
-		 - Text adalah suatu widget yang digunakan untuk merepresentasikan suatu text yang memiliki atrbut yang digunakan untuk mengatur tema dan pengaturan text lainnya 
-	```dart
-	 return MaterialApp(
-	        debugShowCheckedModeBanner: false,
-	        home: Scaffold(
-		        body: Text()
-		    )
-	 )
-	```
-	 - Container
-		 - Container adalah widget yang biasa digunakan sebagai pembungkus widget lainnya yang memiliki macam macam atribut yang bisa digunakan untuk mengkustomisasi penampilannya.
-	```dart
-		 return MaterialApp(
-		        debugShowCheckedModeBanner: false,
-		        home: Scaffold(
-			        body: Container(
-				        child : Widget()
-				    )
-				}
-		 )
-	```
-	 - Icon
-		 - Icon adalah widget yang biasa digunakan untuk merepresentasikan suatu icon/simbol yang dimana flutter sendiri menyediakan fitur bawaan icon pada frameworknya.
-	```dart
-	 return MaterialApp(
-	        debugShowCheckedModeBanner: false,
-	        home: Scaffold(
-		        body: Icon()
-		    )
-	 )
-	```
-	 - Image
-		 - Image adalah widget yang digunakan untuk merepresentasikan sebuah gambar, didalamnya terdapat atribut yang dapat menentukan gambar seperti asalnya, local/internet dan sebagainya
-	```dart
-	 return MaterialApp(
-	        debugShowCheckedModeBanner: false,
-	        home: Scaffold(
-		        body: Image()
-		    )
-	 )
-	```
-	 - Button
-		 - Button adalah widget yang digunakan sebagai tombol, yang fungsi untuk menjalankan suatu prosedur dengan interaksi yang dapat dikustomisasi.
-	```dart
-		 return MaterialApp(
-		        debugShowCheckedModeBanner: false,
-		        home: Scaffold(
-			        body: ElevatedButton(
-				        child : Widget()
-				    )
-				}
-		 )
-	```
- ### Widget Layouting
- - Terdapat tiga widget layouting dasar yaitu
-	 - Column
-		 - Column adalah widget layouting yang digunakan untuk mengatur urutan widget dengan main axis atas-bawah dan cross axis kanan-kiri, column memiliki children dalam bentuk list.
-	```dart
-		 return MaterialApp(
-		        debugShowCheckedModeBanner: false,
-		        home: Scaffold(
-			        body: Column(
-				        children : <Widget>[Widget(),Widget(),....]
-				    )
-				}
-		 )
-	```
-	 - Row
-		 - Row adalah widget layouting yang digunakan untuk mengatur urutan widget dengan main axis kanan-kiri dan cross axis atas-bawah, column memiliki children dalam bentuk list.
-	```dart
-		 return MaterialApp(
-		        debugShowCheckedModeBanner: false,
-		        home: Scaffold(
-			        body: Row(
-				        children : <Widget>[Widget(),Widget(),....]
-				    )
-				}
-		 )
-	```
-	 - Stack
-		 - Stack adalah widget layouting yang digunakan untuk memberi layer atau lapisan yang dapat menimpa suatu widget.
-	```dart
-		 return MaterialApp(
-		        debugShowCheckedModeBanner: false,
-		        home: Scaffold(
-			        body: Stack(
-				        children : <Widget>[Widget(),Widget(),....]
-				    )
-				}
-		 )
-	```
+Disini terdapat initialRoute yang digunakan sebagai halaman utama aplikasi saat dibuka, lalu di dalam routes terdapat beberapa key ('/key') dengan page sebagai valuenya, key ini berguna untuk memanggil mekanisme navigasi pada page.
+
+**Penting**
+Tiap page kecuali main.dart jangan ada yang memiliki MaterialApp lain karena dalam routing ia akan otomatis mencari Inisialisasi MaterialApp terdekat hingga menimbulkan anomali/error
+### Push
+- Push merupakan proses dalam navigasi untuk berpindah ke halaman selanjutnya dari aplikasi 
+```dart
+Navigator.popAndPushNamed(context, '/baju');
+```
+Sintaks diatas digunakan untuk melakukan navigasi ke page yang memiliki key '/baju' yang dimana telah terdaftar untuk navigasi ke page Detailpagebaju
+### Pop
+- Pop merupakan proses dalam navigasi untuk berpindah ke halaman sebelumnya dari aplikasi 
+```dart
+Navigator.popAndPushNamed(context, '/home');
+```
+Sintaks diatas digunakan untuk melakukan navigasi ke page yang memiliki key '/home' yang dimana telah terdaftar untuk navigasi ke page HomePage()
 
 ## Shortcut
 - Membuat Template Stateless Widget
@@ -182,4 +123,3 @@ class MyApp extends StatelessWidget {
 > - Ctrl + .
 - Melihat semua atribut pada widget yang digunakan
 > - Ctrl + i
-
