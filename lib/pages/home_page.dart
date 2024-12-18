@@ -6,16 +6,32 @@ class Homepage extends StatefulWidget {
   const Homepage({super.key});
 
   @override
-  State<Homepage> createState() => _MyAppState();
+  State<Homepage> createState() => _HomepageState();
 }
 
-class _MyAppState extends State<Homepage> {
+class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     /*materialapp usahakan HANYA gunakan pada main.dart saja karena jika tidak 
     route yang seharusnya telah terdefinisi di main.dart tidak bisa ditemukan di salah satu page
     karena ia pasti akan otomatis mencari di materialapp terdekat*/
     return Scaffold(
+      appBar: AppBar(
+        leading: const Icon(Icons.list),
+        leadingWidth: 60,
+        title: Image.asset(
+          "assets/images/IconShop.png",
+          width: 47,
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.popAndPushNamed(context, '/cart');
+              },
+              icon: const Icon(Icons.shop)),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
@@ -34,7 +50,7 @@ class _MyAppState extends State<Homepage> {
       ),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -43,23 +59,6 @@ class _MyAppState extends State<Homepage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Icon(
-                            Icons.menu,
-                            size: 23,
-                          ),
-                          Image.asset(
-                            "assets/images/IconShop.png",
-                            width: 47,
-                          ),
-                          const Icon(
-                            Icons.shopify,
-                            size: 23,
-                          ),
-                        ],
-                      ),
                       const SizedBox(
                         height: 30,
                       ),
@@ -144,25 +143,25 @@ class _MyAppState extends State<Homepage> {
                           scrollDirection: Axis.vertical,
                           children: const [
                             ProductCard(
-                              linkNav: r"/jam",
+                              linkNav: '/jam',
                               linkAsset: "assets/images/Jam.png",
                               nameProduct: "Mi Band 8 Pro",
                               priceProduct: "\$54.00",
                             ),
                             ProductCard(
-                              linkNav: r"/baju",
+                              linkNav: '/baju',
                               linkAsset: "assets/images/Baju.png",
                               nameProduct: "Lycra Men's Shirt",
                               priceProduct: "\$12.00",
                             ),
                             ProductCard(
-                              linkNav: r"/headset",
+                              linkNav: '/headset',
                               linkAsset: "assets/images/Headset.png",
                               nameProduct: "Siberia 800",
                               priceProduct: "\$45.00",
                             ),
                             ProductCard(
-                              linkNav: "/sepatu",
+                              linkNav: '/sepatu',
                               linkAsset: "assets/images/Sepatu.png",
                               nameProduct: "Strawberry Frappucino",
                               priceProduct: "\$35.00",

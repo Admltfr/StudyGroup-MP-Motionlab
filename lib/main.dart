@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_motion1/pages/cart_page.dart';
 import 'package:flutter_motion1/pages/detailpagebaju.dart';
 import 'package:flutter_motion1/pages/detailpageheadset.dart';
 import 'package:flutter_motion1/pages/detailpagejam.dart';
 import 'package:flutter_motion1/pages/detailpagesepatu.dart';
-import 'package:flutter_motion1/pages/homepage.dart';
+import 'package:flutter_motion1/pages/home_page.dart';
 import 'package:flutter_motion1/pages/login_page.dart';
 import 'package:flutter_motion1/pages/registration_page.dart';
+import 'package:flutter_motion1/pages/transaction_page.dart';
+import 'package:get/get.dart';
 
 void main() {
   //untuk load semua package
@@ -26,7 +29,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/login',
       routes: {
@@ -37,6 +40,8 @@ class MyApp extends StatelessWidget {
         '/headset': (context) => const Detailpageheadset(),
         '/jam': (context) => const Detailpagejam(),
         '/sepatu': (context) => const Detailpagesepatu(),
+        '/cart': (context) => const CartPage(),
+        '/transaction': (context) => const TransactionPage(),
       },
     );
   }

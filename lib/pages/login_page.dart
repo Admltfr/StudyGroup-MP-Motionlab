@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_motion1/widgets/splash_nav_button.dart';
 import 'package:flutter_motion1/widgets/input_form_set.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -44,11 +45,17 @@ class Loginpage extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                const InputboxTextdata(text: "Email", obscure: false,),
+                const InputboxTextdata(
+                  text: "Email",
+                  obscure: false,
+                ),
                 const SizedBox(
                   height: 10,
                 ),
-                const InputboxTextdata(text: "Password", obscure: true,),
+                const InputboxTextdata(
+                  text: "Password",
+                  obscure: true,
+                ),
 
                 const SizedBox(
                   height: 30,

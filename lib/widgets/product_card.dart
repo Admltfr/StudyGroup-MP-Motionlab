@@ -24,17 +24,10 @@ class _ProductCardState extends State<ProductCard> {
       onTap: () {
         Navigator.pushNamed(context, widget.linkNav);
       },
-      child: Container(
-        decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: const [
-              BoxShadow(
-                color: Colors.grey,
-                blurRadius: 2.0,
-                offset: Offset(1, 1),
-              )
-            ]),
+      child: Card(
+        color: Colors.white,
+        shadowColor: Colors.black,
+        elevation: 5.0,
         child: Column(
           children: [
             Container(
@@ -49,7 +42,7 @@ class _ProductCardState extends State<ProductCard> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,7 +53,7 @@ class _ProductCardState extends State<ProductCard> {
                       children: [
                         Text(
                           widget.priceProduct,
-                          style: TextStyle(color: Color(0xFF00623B)),
+                          style: const TextStyle(color: Color(0xFF00623B)),
                         ),
                         GestureDetector(
                           onTap: () {

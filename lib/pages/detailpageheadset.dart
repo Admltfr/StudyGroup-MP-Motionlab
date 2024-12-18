@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_motion1/widgets/splash_nav_button.dart';
 
 class Detailpageheadset extends StatelessWidget {
   const Detailpageheadset({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
+    return Scaffold(
           body: SafeArea(
             /*widget layouting yaitu column, row dan stack, untuk row dan column terdapat atribut 
           children dalam bentuk array/list dan dapat disi widget container,text dan lainnya dan juga memiliki atribut alignment property dalam bentuk
@@ -27,16 +26,16 @@ class Detailpageheadset extends StatelessWidget {
                         onTap: () {
                           Navigator.popAndPushNamed(context, '/home');
                         },
-                        child: Icon(
+                        child: const Icon(
                           Icons.chevron_left,
                           size: 33,
                         ),
                       ),
-                      Text(
-                        "Product Detail",
+                      const Text(
+                        "Product",
                         style: TextStyle(fontSize: 22),
                       ),
-                      Icon(
+                      const Icon(
                         Icons.favorite,
                         size: 33,
                         color: Colors.red,
@@ -94,30 +93,8 @@ class Detailpageheadset extends StatelessWidget {
                             //untuk memberi gap
                             height: 10,
                           ),
-                          GestureDetector(
-                            //digunakan untuk menambahkan event pada suatu widget (dengan ditekan gitu atau diapain) eksplorasi aja
-                            onTap: () {},
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  color: Color(0XFF00623B)),
-                              padding: const EdgeInsets.symmetric(
-                                  //sesuai ukuran figma untuk verticalnya
-                                  vertical: 10),
-                              width: double.infinity,
-
-                              child: const Center(
-                                child: Text(
-                                  "Add To Bag",
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white),
-                                ),
-                              ),
-                              //hanya ambil hieght di figmanya jangan width
-                            ),
-                          ),
+                          const SplashButton(
+                              linkNav: '/cart', text: "Add to cart"),
                           const SizedBox(
                             //untuk memberi gap
                             height: 10,
@@ -130,6 +107,6 @@ class Detailpageheadset extends StatelessWidget {
               ),
             ),
           ),
-        ));
+        );
   }
 }
