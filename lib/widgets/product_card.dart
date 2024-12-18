@@ -77,13 +77,3 @@ class _ProductCardState extends State<ProductCard> {
     );
   }
 }
-
-/*jika ada widget yang sama yang ingin digunakan coba gunakan ini
-                    dalam lib pisah page di folder page, dan widget sedangkan main.dart diluar
-                    untuk widget sendiri bisa gunakan di folder widgets, buat stl nah di return placeholdernya masukin widgetnya 
-                    lalu didalam namafile/widget(superkey,this.variabelnya) lalu jika ingin dinamis maka harus pakai parameter kan
-                    kita pakai di dalam pemaggilannya
-                    namafile(fungsi yang dipakai misal hintext : 'ayam') gitu
-                
-                    
-                    */

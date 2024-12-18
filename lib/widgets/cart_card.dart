@@ -20,12 +20,9 @@ class CartCard extends StatelessWidget {
         elevation: 4.0,
         child: ListTile(
           leading: Image.asset(linkAsset),
-          //'assets/images/Jam.png'
           title: Text(titleText),
-          //"Mi Band 8 Pro - Brand New"
-          subtitle:
-              Text(subtitleText, style: const TextStyle(color: Color(0xFF00623B))),
-          //"\$54.00"
+          subtitle: Text(subtitleText,
+              style: const TextStyle(color: Color(0xFF00623B))),
           trailing: Card(
             child: Column(
               children: [

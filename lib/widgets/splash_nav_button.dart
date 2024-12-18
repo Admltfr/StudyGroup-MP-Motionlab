@@ -25,8 +25,6 @@ class SplashButton extends StatelessWidget {
         child: Center(
           child: Text(
             text,
-
-            //untuk panggil googlefonts tinggal, GoogleFonts.namafont
             style: GoogleFonts.roboto(
                 textStyle: const TextStyle(
               fontSize: 15,

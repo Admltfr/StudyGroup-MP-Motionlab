@@ -12,9 +12,6 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
-    /*materialapp usahakan HANYA gunakan pada main.dart saja karena jika tidak 
-    route yang seharusnya telah terdefinisi di main.dart tidak bisa ditemukan di salah satu page
-    karena ia pasti akan otomatis mencari di materialapp terdekat*/
     return Scaffold(
       appBar: AppBar(
         leading: const Icon(Icons.list),
@@ -177,9 +174,6 @@ class _HomepageState extends State<Homepage> {
           ),
         ),
       ),
-      //safearea agar tidak menabrak elemen widget yang seharusnya tidak disentuh pada layar
-      //untuk mengetahui semua atribut yang bisa digunakan gunakan ctrl+i (blok/tempatkan cursor pengetikan dulu dalam kurung parameternya)
-      //kalau namanya yang di ctrl+i maka dia akan ngasih yang mirip
-    );
+      );
   }
 }

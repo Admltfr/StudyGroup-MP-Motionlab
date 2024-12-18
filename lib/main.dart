@@ -47,17 +47,16 @@ class MyApp extends StatelessWidget {
   }
 }
 
-//semakin banyak page yang numpuk semakin berat
+class MyWidget extends StatefulWidget {
+  const MyWidget({super.key});
 
-                  //untuk material page route sebenarnya ada cara lebih mudah,
-                  //hapus navigator dlu lalu pindah ke material app, didalamnya atribut routes kita daftarkan di awal contoh
-                  //routes :
-                  //  {'/': (context) => const Loginpage()}
-                  //  {'/Register': (context => const Registerpage)}
-                  //kan pasti error maka kita gak bisa pake home kita harus pakai
-                  //initialroute: '/'
-                  //maksudnya initial route akan langsung berapa di alamat route '/'
-                  // kan ada 2 '/' dan '/register' nahh
-                  //oh ya ini di main.dart
-                  //untuk ngepush maka
-                  //pakai navigator.pushname(context,'/register');
+  @override
+  State<MyWidget> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
+  }
+}

@@ -1,125 +1,81 @@
 ## Daftar Isi 
-- [Modularitas](#modularitas) 
-	- [Aturan Penamaan](#aturan-penamaan) 
-	- [Reusable Widget](#reusable-widget) 
-- [Package](#package) 
-- [Navigasi](#navigasi) 
-  -  [Aturan Navigasi](#aturan-navigasi) 
-  -  [Push](#push)
-  -  [Pop](#pop)
+- [State](#state-management) 
+	- [Stateless Widget](#stateless-widget) 
+	- [Stateful Widget](#stateful-widget) 
+- [State Management](#state-management) 
+  -  [MVC](#mvc)
+  -  [Inherited Widget](#inherited-widget) 
+  -  [GetX](#getx)
 - [Shortcut](#shortcut) Penting!
 
-## Modularitas
-- **Modularisasi** adalah praktik membagi fungsionalitas menjadi modul-modul yang terpisah dan independen. Dalam pengembangan aplikasi adalah cara yang efisien untuk mengatur komponen-komponen aplikasi dan memungkinkan kolaborasi dalam tim-tim pengembangan.
-### Aturan Penamaan
-- Dalam penamaan file di framework flutter sendiri biasanya digunakan x_y.dart sebagai penamaan secara umumnya
-### Reusable Widget
-- **Reusable Widget** adalah widget yang bisa digunakan kembali, untuk mempermudah pembacaan dan pembuatan algoritma terdapat suatu prinsip penting yaitu modularisasi fungsi/code untuk menghindari duplikasi suatu code yang berpotensi membingungkan programmer lain dan mempersulit proses debugging, oleh karena itu dalam flutter sendiri widget dapat digunakan kembali. Contohnya
-> Widget.dart
+
+## State
+- **State** merupakan suatu kondisi sesuatu pada waktu tertentu atau saat diberi aksi tertentu, bisa dibilang ini state adalah keadaan suatu hal.
+- Dalam flutter sendiri state tentu merupakan hal yang penting karena state merupakan hal utama yang dapat membuat suatu aplikasi menjadi interaktif dan dapat digunakan dengan baik.
+- State dalam flutter terbagi menjadi 2 yaitu stateless widget dan stateful widget
+
+### Stateless Widget
+- **Stateless widget** adalah widget yang tidak memiliki kemampuan untuk merubah statenya
+Berikut merupakan salah satu inisialisasi paling umum dari stataless widget :
 ```dart
-class  ReusableWidget  extends  StatelessWidget {
-	final  String  text;
-	const  ReusableWidget({super.key,required  this.text});
+class  MyWidget  extends  StatelessWidget {
+	const  MyWidget({super.key});
 	@override
 	Widget  build(BuildContext  context) {
-		return  Container(
-			child:  Text(text)
-		);
+		return  Scaffold();
 	}
 }
 ```
-File widget,dart diatas biasanya disimpan di direktori lib/pages/Widget.dart
+- Stateless widget biasanya digunakan pada tampilan/interface yang tidak memerlukan perubahan state
 
-Lalu untuk memanggil widgetnya sendiri, perlu mengimport file widget tersebut dan disini dapat dilakukan pemanggilan
-> Main.dart
+### Stateful Widget
+- **Stateless widget** adalah widget yang memiliki kemampuan untuk merubah statenya hingga memiliki suatu fitur khusus untuk bisa mengubah state yang ada pada widget
+Berikut merupakan salah satu inisialisasi paling umum dari stateful widget :
 ```dart
-import  'package:project_name/pages/Widget.dart';
-class  MyApp  extends  StatelessWidget {
-	const  MyApp({super.key});
+class  MyWidget  extends  StatefulWidget {
+	const  MyWidget({super.key});
+	@override
+	State<MyWidget> createState() =>  _MyWidgetState();
+}
+
+class  _MyWidgetState  extends  State<MyWidget> {
 	@override
 	Widget  build(BuildContext  context) {
-		return  MaterialApp(
-			home:  Scaffold(
-				body: ReusableWidget(text : "DRY"), 
-			),
-		);
+		return  Scaffold();
 	}
 }
 ```
+- Seperti yang terlihat perbedaannya dari stateless widget, disini stateful widget memiliki method createstate yang diimplementasikan pada _MyWidgetState() 
+- Stateful widget biasanya digunakan pada tampilan/interface yang memerlukan perubahan state, dan mengutamakan interaktifitas yang biasanya menggunakan setState()
+- Sangat disarankan memakai Stateless widget untuk widget yang tidak memerlukan perubahan state karena stateful widget dapat mempengaruhi performa aplikasi
 
-## Package
-- **Package** dalam framework flutter adalah kumpulan kode dart yang dapat memudahkan atau mengakses file dart yang membantu proses pengembangan aplikasi. Contohnya seperti Lottie dan Google Fonts yang dimana package ini dapat memudahkan pengembang atau developer dalam mengembangkan suatu aplikasi dengan fungsional yang lebih baik. Contoh instalasi :
-format: nama_package : ^versi
-> Pubspec.yaml
-```yaml
-dependencies:
-	flutter:
-		sdk: flutter
-	cupertino_icons: ^1.0.8
-	lottie: ^3.1.3
-	google_fonts: ^6.2.1
-```
-Lalu run di terminal
-```cmd
-flutter pub get 
-```
-Lalu diimport pada file.dart yang menggunakan package tersebut. Contoh :
-```dart
-import  'package:google_fonts/google_fonts.dart';
-```
-Lalu terakhir masukkan sintaks untuk melakukan load semua package saat aplikasi dimulai pada main.dart didalam fungsi void main()
-```dart
-WidgetsFlutterBinding.ensureInitialized();
-```
-## Navigasi
-- Navigasi merupakan suatu mekanisme untuk berpindah pada satu page ke page yang lain, disini mekanisme navigasi sangat penting untuk diterapkan pada setiap aplikasi yang ada hingga sifatnya wajib untuk diterapkan untuk di berbagai proyek yang memiliki lebih dari 1 page.
+## State Management
+- **State management** adalah sistem pengelolaan state dalam suatu aplikasi
+- Peruntukan state ada 2 yaitu 
+   - Shared State
+      - Yaitu state yang diperuntukkan widget yang memakainya dengan sistem shared hingga memberikan seluruh widget yang menggunakannya state yang sama, biasanya digunakan untuk widget yang mengharuskan widget lainnya memiliki perubahan state yang sama.
+   - Ephemeral State 
+      - Yaitu state yang diperuntukkan widget yang memakainya dengan sistem individual hingga tiap widget yang menggunakannya memiliki pemakaian state yang berbeda satu sama lain, biasanya digunakan untuk widget yang memiliki sifat state yang khusus/tidak berkorelasi dengan perubahan widget lain yang memiliki penggunaan yang serupa.
 
-### Aturan Navigasi
-- Navigasi page sendiri dapat dianalogikan sebagai stack/tumpukan yang dimana memiliki konsep Last In, First Out hingga memiliki 2 proses yaitu Push dan Pop
-- Dalam framework flutter terdapat atribut dari MaterialApp yaitu routes yang dimana ini digunakan untuk menginisialisasi semacam map untuk melakukan navigasi. Contoh : 
-> Main.dart
-```dart
-class  MyApp  extends  StatelessWidget {
-	const  MyApp({super.key});
-	@override
-	Widget  build(BuildContext  context) {
-		return  MaterialApp(
-			debugShowCheckedModeBanner:  false,
-			initialRoute:  '/login',
-			routes: {
-				'/login': (context) =>  const  Loginpage(),
-				'/register': (context) =>  const  RegistrationPage(),
-				'/home': (context) =>  const  Homepage(),
-				'/baju': (context) =>  const  Detailpagebaju(),
-				'/headset': (context) =>  const  Detailpageheadset(),
-				'/jam': (context) =>  const  Detailpagejam(),
-				'/sepatu': (context) =>  const  Detailpagesepatu(),
-			},
-		);
-	}
-}
-```
-Disini terdapat initialRoute yang digunakan sebagai halaman utama aplikasi saat dibuka, lalu di dalam routes terdapat beberapa key ('/key') dengan page sebagai valuenya, key ini berguna untuk memanggil mekanisme navigasi pada page.
+### MVC
+- MVC merupakan konsep penting dalam state management karena menjelaskan alur bagaimana state digunakan yang terdiri dari 
+	- Controller
+	  - Yaitu bagian yang memanipulasi model dan mengubah view
+    - Model
+	  - Yaitu bagian yang berisikan logika dan aturan aturan dari suatu aplikasi
+   - View
+	  - Yaitu bagian yang mentranslasikan model menjadi suatu tampilan/interface
+- Berikut merupakan alur kerja MVC :
+	-  **User** berinteraksi dengan tampilan (View), misalnya menekan tombol atau memasukkan teks.
+	- **Controller** menerima input dari View dan memutuskan tindakan apa yang harus dilakukan.
+	- **Controller** meminta data ke **Model** atau memperbarui data pada Model.
+	-  **Model** mengirimkan data yang sudah diubah/diambil ke Controller.
+	-  **Controller** memperbarui **View** dengan data terbaru dari Model.
+### Inherited Widget
+- Merupakan sistem pewarisan state widget parent ke suatu widget child hingga statenya dapat digunakan, atau bisa dibilang inherited widget ini merupakan penyedia data state dari parent ke childnya.
+- Namun dalam implementasinya inherited widget terbilang rumit terutama untuk pemula serta kurang fleksibel, hingga untuk mempermudahnya, digunakan package GetX
+### GetX
+- GetX merupakan suatu package yang sangat powerful yang bekerja layaknya sihir (Hiperbola).
+- Dokumentasi GetX dapat dilihat pada tautan berikut (https://github.com/jonataslaw/getx/blob/master/README.id-ID.md)
+- Fitur yang ditawarkan GetX sangat banyak seperti pengaturan state yang fleksibel dan lebih efisien, serta navigasi yang lebih simple dan masih banyak lagi fiturnya
 
-**Penting**
-Tiap page kecuali main.dart jangan ada yang memiliki MaterialApp lain karena dalam routing ia akan otomatis mencari Inisialisasi MaterialApp terdekat hingga menimbulkan anomali/error
-### Push
-- Push merupakan proses dalam navigasi untuk berpindah ke halaman selanjutnya dari aplikasi 
-```dart
-Navigator.popAndPushNamed(context, '/baju');
-```
-Sintaks diatas digunakan untuk melakukan navigasi ke page yang memiliki key '/baju' yang dimana telah terdaftar untuk navigasi ke page Detailpagebaju
-### Pop
-- Pop merupakan proses dalam navigasi untuk berpindah ke halaman sebelumnya dari aplikasi 
-```dart
-Navigator.popAndPushNamed(context, '/home');
-```
-Sintaks diatas digunakan untuk melakukan navigasi ke page yang memiliki key '/home' yang dimana telah terdaftar untuk navigasi ke page HomePage()
-
-## Shortcut
-- Membuat Template Stateless Widget
-> - Ketik "stl" 
--	Mengakses menu refractor
-> - Ctrl + .
-- Melihat semua atribut pada widget yang digunakan
-> - Ctrl + i

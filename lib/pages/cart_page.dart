@@ -7,7 +7,6 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //obx harus discaffold
     return Scaffold(
       appBar: AppBar(
         leading: Padding(
