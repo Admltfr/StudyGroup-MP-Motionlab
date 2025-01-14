@@ -1,16 +1,18 @@
-# motion_shop
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+elaskan alur bagaimana state digunakan yang terdiri dari 
+	- Controller
+	  - Yaitu bagian yang memanipulasi model dan mengubah view
+    - Model
+	  - Yaitu bagian yang berisikan logika dan aturan aturan dari suatu aplikasi
+   - View
+	  - Yaitu bagian yang mentranslasikan model menjadi suatu tampilan/interface
+- Berikut merupakan alur kerja MVC :
+	-  **User** berinteraksi dengan tampilan (View), misalnya menekan tombol atau memasukkan teks.
+	- **Controller** menerima input dari View dan memutuskan tindakan apa yang harus dilakukan.
+	- **Controller** meminta data ke **Model** atau memperbarui data pada Model.
+	-  **Model** mengirimkan data yang sudah diubah/diambil ke Controller.
+	-  **Controller** memperbarui **View** dengan data terbaru dari Model.
+### Inherited Widget
+- Merupakan sistem pewarisan state widget parent ke suatu widget child hingga statenya dapat digunakan, atau bisa dibilang inherited widget ini merupakan penyedia data state dari parent ke childnya.
+- Namun dalam implementasinya inherited widget terbilang rumit terutama untuk pemula serta kurang fleksibel, hingga untuk mempermudahnya, digunakan package GetX
+### GetX
+- GetX merupakan suatu package yang sangat powerful yang bekerja layaknya sihir (Hiperbola).
