@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:study_group_flutter/app/data/models/product_model.dart';
 import 'package:study_group_flutter/app/routes/app_pages.dart';
-import 'package:study_group_flutter/app/utils/data_dummy.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -87,17 +85,17 @@ class HomeView extends GetView<HomeController> {
                                 shrinkWrap: true,
                                 scrollDirection: Axis.horizontal,
                                 clipBehavior: Clip.none,
-                                itemCount:
-                                    controller.category.value.name?.length ?? 6,
+                                itemCount: controller.categoryList.length,
                                 separatorBuilder: (context, index) =>
                                     const SizedBox(width: 12),
                                 itemBuilder: (context, index) {
-                                  final String? data =
-                                      controller.category.value.name?[index];
+                                  final String data =
+                                      controller.categoryList[index];
 
                                   return InkWell(
                                     borderRadius: BorderRadius.circular(50),
-                                    onTap: () => controller.fetchCategory(data),
+                                    onTap: () => controller
+                                        .filterProductsByCategory(data),
                                     child: Container(
                                       padding: const EdgeInsets.symmetric(
                                         horizontal: 24,
@@ -112,7 +110,7 @@ class HomeView extends GetView<HomeController> {
                                         borderRadius: BorderRadius.circular(50),
                                       ),
                                       child: Text(
-                                        data!,
+                                        data,
                                         style: Theme.of(context)
                                             .textTheme
                                             .titleLarge!
@@ -150,19 +148,17 @@ class HomeView extends GetView<HomeController> {
                                 mainAxisSpacing: 20,
                                 childAspectRatio: 0.67,
                               ),
-                              itemCount:
-                                  controller.product.value.products?.length ??
-                                      0,
+                              itemCount: controller.onCategoryProducts.length,
                               itemBuilder: (context, index) {
                                 final data =
-                                    controller.product.value.products?[index];
+                                    controller.onCategoryProducts[index];
 
                                 return InkWell(
                                   borderRadius: BorderRadius.circular(12),
                                   onTap: () {
                                     Get.toNamed(
                                       Routes.DETAIL_PRODUCT,
-                                      arguments: {"id": data?.id ?? 0},
+                                      arguments: {"id": data.id ?? 0},
                                     );
                                   },
                                   child: Container(
@@ -183,7 +179,7 @@ class HomeView extends GetView<HomeController> {
                                           borderRadius:
                                               BorderRadius.circular(12),
                                           child: Image.network(
-                                            data?.thumbnail ?? "",
+                                            data.thumbnail ?? "",
                                             fit: BoxFit.contain,
                                           ),
                                         ),
@@ -199,7 +195,7 @@ class HomeView extends GetView<HomeController> {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                data?.title ?? "",
+                                                data.title ?? "",
                                                 style: const TextStyle(
                                                     color: Colors.black),
                                               ),
@@ -209,7 +205,7 @@ class HomeView extends GetView<HomeController> {
                                                         .spaceBetween,
                                                 children: [
                                                   Text(
-                                                    '\$${data?.price}',
+                                                    '\$${data.price}',
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .headlineLarge!
