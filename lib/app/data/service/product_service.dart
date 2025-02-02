@@ -45,16 +45,4 @@ class ProductService {
     }
   }
 
-  Future<ProductElement?> getProductsByCategory({required int category}) async {
-    try {
-      final response = await dio.get('$url/products/$category');
-      print(response.data);
-      if (response.statusCode == 200) {
-        return ProductElement.fromJson(response.data);
-      }
-      return null;
-    } catch (e) {
-      return throw Exception(e);
-    }
-  }
 }

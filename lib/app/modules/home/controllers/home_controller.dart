@@ -42,25 +42,21 @@ class HomeController extends GetxController {
     selectedCategory = inCategory;
     update();
     // print("Selected Category: $inCategory");
-    try {
-      if (inCategory == "All") {
-        // onCategoryProducts = product.value.products;
-        onCategoryProducts.assignAll(product.value.products ?? []);
-      } else {
-        // onCategoryProducts = product.value.products
-        //     ?.where((product) => product.category.toString() == inCategory)
-        //     .toList();
-        // update();
-        onCategoryProducts.assignAll(product.value.products?.where((product) {
-              // print(
-              //     "Checking Product: '${product.title}' -> Category: '${product.category.toString().toLowerCase()}'");
-              return product.category?.toString().toLowerCase() ==
-                  "category.$inCategory";
-            }).toList() ??
-            []);
-      }
-    } finally {
-      isLoading.value = false;
+    if (inCategory == "All") {
+      // onCategoryProducts = product.value.products;
+      onCategoryProducts.assignAll(product.value.products ?? []);
+    } else {
+      // onCategoryProducts = product.value.products
+      //     ?.where((product) => product.category.toString() == inCategory)
+      //     .toList();
+      // update();
+      onCategoryProducts.assignAll(product.value.products?.where((product) {
+            // print(
+            //     "Checking Product: '${product.title}' -> Category: '${product.category.toString().toLowerCase()}'");
+            return product.category?.toString().toLowerCase() ==
+                "category.$inCategory";
+          }).toList() ??
+          []);
     }
   }
 }
