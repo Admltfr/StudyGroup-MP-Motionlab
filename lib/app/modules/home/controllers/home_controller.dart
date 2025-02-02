@@ -10,7 +10,7 @@ class HomeController extends GetxController {
   //Variabel non-model
   ProductService productService = ProductService();
   RxBool isLoading = true.obs;
-  String selectedCategory = "beauty";
+  String selectedCategory = "All";
   @override
   void onInit() {
     super.onInit();
