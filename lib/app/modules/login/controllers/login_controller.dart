@@ -2,13 +2,13 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:study_group_flutter/app/data/models/user_model_api.dart';
-import 'package:study_group_flutter/app/data/service/product_service.dart';
+import 'package:study_group_flutter/app/data/service/api_service.dart';
 
 class LoginController extends GetxController {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  ProductService productService = ProductService();
+  ApiService userService = ApiService();
 
   bool isLoading = false;
   String errorMessage = '';
@@ -55,7 +55,7 @@ class LoginController extends GetxController {
     update();
 
     try {
-      final UserModel user = await productService.userLogin(
+      final UserModel user = await userService.userLogin(
         username: usernameController.text.trim(),
         password: passwordController.text.trim(),
       );
@@ -63,6 +63,7 @@ class LoginController extends GetxController {
       final prefs = await SharedPreferences.getInstance();
       await prefs.setBool('is_logged_in', true);
       await prefs.setString('username', user.username);
+      await prefs.setString('token', user.accessToken);
 
       Get.snackbar('Login Successful', 'Welcome, ${user.firstName}');
       Get.offNamed('/dashboard');

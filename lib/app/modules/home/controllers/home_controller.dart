@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:study_group_flutter/app/data/service/product_service.dart';
+import 'package:study_group_flutter/app/data/service/api_service.dart';
 import '../../../data/models/product_model_api.dart';
 
 class HomeController extends GetxController {
@@ -8,7 +8,7 @@ class HomeController extends GetxController {
   List<String> categoryList = [];
   RxList<ProductElement> onCategoryProducts = <ProductElement>[].obs;
   //Variabel non-model
-  ProductService productService = ProductService();
+  ApiService productService = ApiService();
   RxBool isLoading = true.obs;
   String selectedCategory = "All";
   @override
