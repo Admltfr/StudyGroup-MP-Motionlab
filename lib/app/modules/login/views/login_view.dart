@@ -54,7 +54,7 @@ class LoginView extends GetView<LoginController> {
                       ),
                       const SizedBox(height: 20),
                       CustomTextField(
-                          hintText: 'username',
+                          hintText: 'Username',
                           icon: const Icon(
                             Icons.email_outlined,
                             color: Color(0xFF344E41),
@@ -63,7 +63,7 @@ class LoginView extends GetView<LoginController> {
                           controller: controller.usernameController),
                       const SizedBox(height: 20),
                       CustomTextField(
-                          hintText: 'Username',
+                          hintText: 'Password',
                           icon: const Icon(
                             Icons.lock_outline_rounded,
                             color: Color(0xFF344E41),

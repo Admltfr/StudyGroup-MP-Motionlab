@@ -15,52 +15,53 @@ class ProfileView extends GetView<ProfileController> {
       init: ProfileController(),
       builder: (_) {
         return Scaffold(
-          appBar: AppBar(
-            title: const Text('ProfileView'),
-            centerTitle: true,
-          ),
-          body: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          body: SafeArea(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
                 children: [
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.menu_rounded),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(Icons.menu_rounded),
+                      ),
+                      Image.asset(
+                        'assets/icons/ic_logo.png',
+                        height: kToolbarHeight - 16.h,
+                        fit: BoxFit.contain,
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          Get.toNamed(Routes.CART);
+                        },
+                        icon: const Icon(
+                          Icons.shopping_bag_outlined,
+                        ),
+                      ),
+                    ],
                   ),
-                  Image.asset(
-                    'assets/icons/ic_logo.png',
-                    height: kToolbarHeight - 16.h,
-                    fit: BoxFit.contain,
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      Get.toNamed(Routes.CART);
-                    },
-                    icon: const Icon(
-                      Icons.shopping_bag_outlined,
-                    ),
-                  ),
+                  const Expanded(child: SizedBox()),
+                  controller.isLoading
+                      ? const Padding(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 4,
+                          ),
+                          child: CircularProgressIndicator(
+                            color: Color(0xFF00623B),
+                          ),
+                        )
+                      : CustomButton(
+                          text: 'Logout',
+                          onTap: () {
+                            controller.logout();
+                          },
+                        ),
+                  const Expanded(child: SizedBox()),
                 ],
               ),
-              const Expanded(child: SizedBox()),
-              controller.isLoading
-                  ? const Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 4,
-                      ),
-                      child: CircularProgressIndicator(
-                        color: Color(0xFF00623B),
-                      ),
-                    )
-                  : CustomButton(
-                      text: 'Logout',
-                      onTap: () {
-                        controller.logout();
-                      },
-                    ),
-              const Expanded(child: SizedBox()),
-            ],
+            ),
           ),
         );
       },

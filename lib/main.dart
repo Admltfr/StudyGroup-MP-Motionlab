@@ -3,10 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:study_group_flutter/app/common/theme/app_theme.dart';
 import 'package:study_group_flutter/app/modules/cart/controllers/cart_controller.dart';
+import 'package:study_group_flutter/app/modules/favorite/controllers/favorite_controller.dart';
 import 'package:study_group_flutter/app/routes/app_pages.dart';
 
 void main() {
   Get.put(CartController());
+  Get.put(FavoriteController());
   runApp(const MainApp());
 }
 

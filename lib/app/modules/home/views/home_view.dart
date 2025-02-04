@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:study_group_flutter/app/modules/favorite/controllers/favorite_controller.dart';
 import 'package:study_group_flutter/app/routes/app_pages.dart';
 
 import '../controllers/home_controller.dart';
@@ -10,6 +11,7 @@ class HomeView extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    final favoriteController = Get.find<FavoriteController>();
     return GetBuilder<HomeController>(
         init: HomeController(),
         builder: (_) {
@@ -146,7 +148,7 @@ class HomeView extends GetView<HomeController> {
                                 crossAxisCount: 2,
                                 crossAxisSpacing: 20,
                                 mainAxisSpacing: 20,
-                                childAspectRatio: 0.67,
+                                childAspectRatio: 0.60,
                               ),
                               itemCount: controller.onCategoryProducts.length,
                               itemBuilder: (context, index) {
@@ -214,15 +216,35 @@ class HomeView extends GetView<HomeController> {
                                                               0xFF00623B),
                                                         ),
                                                   ),
-                                                  // IconButton(
-                                                  //   onPressed: () {},
-                                                  //   icon: Icon(
-                                                  //     Icons.favorite,
-                                                  //     color: data.isFavorite
-                                                  //         ? Colors.red
-                                                  //         : Colors.grey,
-                                                  //   ),
-                                                  // )
+                                                  IconButton(
+                                                    onPressed: () {
+                                                      if (favoriteController
+                                                          .isFavorite(data)) {
+                                                        favoriteController
+                                                            .removeFavorite(
+                                                                data);
+                                                      } else {
+                                                        favoriteController
+                                                            .addFavorite(data);
+                                                      }
+                                                    },
+                                                    icon: Obx(
+                                                      () => Icon(
+                                                        favoriteController
+                                                                .isFavorite(
+                                                                    data)
+                                                            ? Icons.favorite
+                                                            : Icons
+                                                                .favorite_border,
+                                                        color:
+                                                            favoriteController
+                                                                    .isFavorite(
+                                                                        data)
+                                                                ? Colors.red
+                                                                : Colors.grey,
+                                                      ),
+                                                    ),
+                                                  )
                                                 ],
                                               )
                                             ],
