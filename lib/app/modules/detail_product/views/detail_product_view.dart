@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:study_group_flutter/app/common/widgets/custom_button.dart';
-import 'package:study_group_flutter/app/modules/cart/controllers/cart_controller.dart';
 import 'package:study_group_flutter/app/routes/app_pages.dart';
 
 import '../controllers/detail_product_controller.dart';

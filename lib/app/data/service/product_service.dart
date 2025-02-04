@@ -1,6 +1,4 @@
-import 'dart:convert';
-
-import 'package:dio/dio.dart';
+import 'package:study_group_flutter/app/data/models/user_model_api.dart';
 
 import '../models/product_model_api.dart';
 import '../../shared/constanta.dart';
@@ -9,7 +7,6 @@ class ProductService {
   Future<Product?> getProducts() async {
     try {
       final response = await dio.get('$url/products/');
-      print(response.data);
       if (response.statusCode == 200) {
         return Product.fromJson(response.data);
       }
@@ -22,7 +19,6 @@ class ProductService {
   Future<ProductElement?> getDetailsProducts({required int id}) async {
     try {
       final response = await dio.get('$url/products/$id');
-      print(response.data);
       if (response.statusCode == 200) {
         return ProductElement.fromJson(response.data);
       }
@@ -35,7 +31,6 @@ class ProductService {
   Future<List<String>> getCategory() async {
     try {
       final response = await dio.get('$url/products/category-list');
-      print(response.data);
       if (response.statusCode == 200) {
         return List<String>.from(response.data);
       }
@@ -45,4 +40,18 @@ class ProductService {
     }
   }
 
+  Future<UserModel> userLogin(
+      {required String username, required String password}) async {
+    try {
+      final response = await dio.post('$url/auth/login',
+          data: {'username': username, 'password': password});
+      if (response.statusCode == 200) {
+        return UserModel.fromJson(response.data);
+      } else {
+        throw Exception('Login Failed');
+      }
+    } catch (e) {
+      return throw Exception(e);
+    }
+  }
 }
