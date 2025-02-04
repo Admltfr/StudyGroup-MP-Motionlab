@@ -7,7 +7,7 @@ class ProfileController extends GetxController {
   Rx<User?> user = Rx<User?>(null);
 
   ApiService userService = ApiService();
-  bool isLoading = false;
+  RxBool isLoading = true.obs;
 
   @override
   void onInit() {
@@ -15,13 +15,12 @@ class ProfileController extends GetxController {
     fetchUserData();
   }
 
-  // Fitur logout untuk menghapus status login
   Future<void> logout() async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool('is_logged_in', false);
-    await prefs.remove('username'); // Menghapus data pengguna
+    await prefs.remove('username'); 
     await prefs.remove('id');
-    isLoading = true;
+    isLoading.value = false;
     Get.snackbar('Logged Out', 'You have been logged out');
     Get.offNamed('/login');
   }
@@ -33,6 +32,8 @@ class ProfileController extends GetxController {
 
       final userData = await userService.getUserData(token);
       user.value = userData;
-    } finally {}
+    } finally {
+      isLoading.value = false;
+    }
   }
 }
